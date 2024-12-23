@@ -18,24 +18,11 @@ export class api extends Request {
    * FREE API *
    ************/
 
-  /**
-   * 活动日历
-   *
-   * 今天、明天、后天、日常任务。
-   * 只有星期三、星期五、星期六、星期日 才有美人画图，星期三、星期五 才有世界首领，若非活动时间不返回相关键与值。
-   *
-   * @param {string} [server] - 区服名称，查找该区服的记录。
-   * @param {number} [num=0] - 预测时间，预测指定时间的日常，默认值为0（即当天），1为明天，以此类推。
-   * @returns {Object} - 包含今天、明天、后天、日常任务的对象。
-   */
-  active_calendar(server: string, num: number = 0): Promise<AxiosResponse> {
+  active_calendar(data: any): Promise<any> {
     return this.getAxios().request({
       url: "/data/active/calendar",
       method: "post",
-      data: {
-        server,
-        num,
-      },
+      data,
     });
   }
 }
